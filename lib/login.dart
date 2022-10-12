@@ -5,6 +5,7 @@ import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:test/onboarding_page.dart';
 import 'package:test/home_page.dart';
+import 'package:test/shared_pref.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -17,13 +18,15 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
 
+    
+
     // object_controller
     TextEditingController emailController = TextEditingController();
     TextEditingController pwdController = TextEditingController();
 
     // data login dummy
-    var emaildummy = "tegar@gmail.com";
-    var pwddummy = "aaa";
+    var emaildummy = "a";
+    var pwddummy = "a";
 
     return Scaffold(
       appBar: AppBar(
@@ -123,21 +126,21 @@ class _LoginPageState extends State<LoginPage> {
                       textColor: Colors.white,
                       child: Text("Login"),
                       onPressed: () {
-                          if (emailController.text == emaildummy) {
-                            if (pwdController.text == pwddummy) {
-                                  Navigator.push(context, MaterialPageRoute(builder: (context) => HomePage()));
-                            } else {
-                              ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                                backgroundColor: Colors.red,
-                                content: Text("Password salah"),
-                              ));
-                            }
-                          } else {
-                            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                              content: Text("Email salah"),
-                              backgroundColor: Colors.red,
-                            ));
-                          }
+                          // if (emailController.text == emaildummy) {
+                          //   if (pwdController.text == pwddummy) {
+                          //         Navigator.push(context, MaterialPageRoute(builder: (context) => HomePage()));
+                          //   } else {
+                          //     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                          //       backgroundColor: Colors.red,
+                          //       content: Text("Password salah"),
+                          //     ));
+                          //   }
+                          // } else {
+                          //   ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                          //     content: Text("Email salah"),
+                          //     backgroundColor: Colors.red,
+                          //   ));
+                          //}
 
                       }),
                   SizedBox(

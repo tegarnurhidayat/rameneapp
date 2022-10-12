@@ -1,12 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:test/login.dart';
+import 'package:test/shared_pref.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+  Function setTheme;
+   HomePage({Key? key, required this.setTheme}) : super(key: key);
 
   @override
   State<HomePage> createState() => _HomePageState();
 }
-List<String> kumpulanGambar = [
+
+class _HomePageState extends State<HomePage> {
+  bool isDarkmode = SharedPref.pref?.getBool('isDarkmode') ?? false;
+  
+  @override
+  Widget build(BuildContext context) {
+    List<String> kumpulanGambar = [
       "img_1.png",
       "img_2.png",
       "img_3.png",
@@ -15,29 +24,22 @@ List<String> kumpulanGambar = [
       "img_6.png"
     ];
 
-
-class _HomePageState extends State<HomePage>  {
-  @override
-  Widget build(BuildContext context) {
-    
-    return new WillPopScope(
-    onWillPop: () async => false,
-    
-  
-    
-    child: new Scaffold(
+    return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.blue,
         title: const Text(
           "Home",
           style: TextStyle(color: Colors.black),
         ),
         actions: <Widget>[
           IconButton(
-            icon: const Icon(Icons.notifications,
+            icon: const Icon(Icons.dark_mode,
                 color: const Color.fromARGB(255, 0, 0, 0)),
-            onPressed: () {},
+            onPressed: () {
+              isDarkmode = !isDarkmode;
+              widget.setTheme(isDarkmode);
+            },
           ),
         ],
       ),
@@ -90,11 +92,6 @@ class _HomePageState extends State<HomePage>  {
           )
         ],
       ),
-    
-    ),
     );
-    
-    
   }
-
 }
